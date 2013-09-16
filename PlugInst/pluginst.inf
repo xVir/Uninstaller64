@@ -1,0 +1,10 @@
+[plugininstall]
+description=Plugin for managing uninstallation of applications.
+descriptionrus=Ïëàãèí äëÿ óïğàâëåíèÿ óñòàíîâëåííûìè ïğèëîæåíèÿìè.
+descriptiondeu=Plugin zur Verwaltung der Deinstallation von Anwendungen.
+descriptionesp=Plugin para gestionar la desinstalación de aplicaciones.
+descriptionfra=Plugin pour gérer la désinstallation de programme ou fonctionnalité.
+descriptionhun=Az alkalmazások uninstallálását megkönnyítõ plugin.
+type=wfx
+file=Uninstaller64.wfx
+defaultdir=Uninstaller64

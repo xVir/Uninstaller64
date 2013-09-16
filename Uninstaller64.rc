@@ -1,0 +1,228 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include <windows.h>
+
+#ifndef IDC_STATIC
+#define IDC_STATIC                      -1
+#endif
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Russian resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)
+#ifdef _WIN32
+LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
+#pragma code_page(1251)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include <windows.h>\r\n"
+    "\r\n"
+    "#ifndef IDC_STATIC\r\n"
+    "#define IDC_STATIC                      -1\r\n"
+    "#endif\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // Russian resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 231, 105
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,174,7,50,14
+    ICON            IDI_MAIN_ICON,IDC_STATIC,10,10,20,20
+    LTEXT           "Program: Uninstaller64",IDC_PROGRAM,40,10,130,8
+    LTEXT           "Version:",IDC_VERSION,40,20,130,8
+    LTEXT           "Author: Konstantin Vlasov",IDC_AUTHOR,40,36,130,8
+    LTEXT           "Copyright © 2012 CaptainFlint Software",IDC_STATIC,40,46,130,8
+    GROUPBOX        "",IDC_STATIC,7,60,217,38
+    ICON            IDI_HOMEPAGE_ICON,IDC_STATIC,38,70,20,20,SS_REALSIZEIMAGE
+    RTEXT           "Homepage:",IDC_HOMEPAGE_TXT,52,70,73,8
+    LTEXT           "http://flint-inc.ru/",IDC_HOMEPAGE,129,70,94,8,SS_NOTIFY
+    ICON            IDI_MAIL_ICON,IDC_STATIC,38,82,20,20,SS_REALSIZEIMAGE
+    RTEXT           "E-mail:",IDC_EMAIL_TXT,52,83,73,8
+    LTEXT           "support@flint-inc.ru",IDC_EMAIL,129,83,94,8,SS_NOTIFY
+END
+
+IDD_SETTINGS DIALOGEX 0, 0, 199, 161
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Settings"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "Show &hidden entries",IDC_SHOW_HIDDEN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,7,185,10
+    CONTROL         "Show &icons for hidden entries",IDC_SHOW_HIDDEN_ICONS,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,18,20,174,10
+    CONTROL         "Show Windows hot&fixes",IDC_SHOW_HOTFIXES,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,36,185,10
+    CONTROL         "Confirm &uninstallation",IDC_CONFIRM_UNINST,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,52,185,10
+    CONTROL         "&Confirm for hidden entries only",IDC_CONFIRM_UNINST_HIDDEN,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,18,66,174,10
+    LTEXT           "Plugin &settings file location:",IDC_INI_LOCATION_TXT,7,82,185,12,SS_CENTERIMAGE
+    COMBOBOX        IDC_INI_LOCATION,7,96,185,40,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Language:",IDC_LANGUAGE_TXT,7,115,53,12,SS_CENTERIMAGE
+    COMBOBOX        IDC_LANGUAGE,81,115,111,65,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "&About…",IDC_ABOUT,7,140,60,14
+    DEFPUSHBUTTON   "OK",IDOK,86,140,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,142,140,50,14
+END
+
+IDD_ENTRY_PROPERTIES DIALOGEX 0, 0, 273, 186
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Properties"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        " Standard parameters ",IDC_GRP_STANDARD,7,7,259,72
+    LTEXT           "DisplayName:",IDC_STATIC,15,17,244,8
+    EDITTEXT        IDC_DISPLAY_NAME,14,28,245,14,ES_AUTOHSCROLL
+    LTEXT           "UninstallString:",IDC_STATIC,15,47,244,8
+    EDITTEXT        IDC_UNINSTALL_STRING,14,58,245,14,ES_AUTOHSCROLL
+    GROUPBOX        " Hidden parameters ",IDC_GRP_HIDDEN,7,85,259,72
+    LTEXT           "QuietDisplayName:",IDC_STATIC,15,95,244,8
+    EDITTEXT        IDC_QUIET_DISPLAY_NAME,14,106,245,14,ES_AUTOHSCROLL
+    LTEXT           "QuietUninstallString:",IDC_STATIC,15,125,244,8
+    EDITTEXT        IDC_QUIET_UNINSTALL_STRING,14,136,245,14,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,160,165,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,216,165,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 224
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 98
+    END
+
+    IDD_SETTINGS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 192
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 154
+    END
+
+    IDD_ENTRY_PROPERTIES, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 266
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 179
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,1,0
+ PRODUCTVERSION 1,0,1,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "CompanyName", "CaptainFlint Software"
+            VALUE "FileDescription", "Uninstaller64: FS-plugin for Total Commander"
+            VALUE "FileVersion", "1.0.1"
+            VALUE "InternalName", "Uninstaller64"
+            VALUE "LegalCopyright", "Copyright © 2012 CaptainFlint Software"
+            VALUE "OriginalFilename", "Uninstaller64.wfx"
+            VALUE "ProductName", "Uninstaller64"
+            VALUE "ProductVersion", "1.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// RCDATA
+//
+
+IDR_DEFAULT_LANGUAGE    RCDATA                  "Language\\eng.lng"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_MAIN_ICON           ICON                    "res\\Uninstaller64.ico"
+IDI_DEFAULT_ICON        ICON                    "res\\DefaultIcon.ico"
+IDI_HOMEPAGE_ICON       ICON                    "res\\Homepage.ico"
+IDI_MAIL_ICON           ICON                    "res\\Mail.ico"
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
