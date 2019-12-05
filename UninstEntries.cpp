@@ -288,6 +288,10 @@ bool UninstEntries::UpdateUninstLocation(UninstRegBranch& RegBranch)
 							break;
 						if (RegQueryValueEx(hKeyARPCEntry, L"SlowInfoCache", NULL, NULL, (LPBYTE)SIC, &TempBufSz) == ERROR_SUCCESS)
 						{
+							if (SIC->m_Size > TempBufSz || SIC->m_Size < sizeof(SlowInfoCache)) {
+								free(SIC);
+								break;
+							}
 							if (CurrentEntry->m_SIC)
 								free(CurrentEntry->m_SIC);
 							CurrentEntry->m_SIC = SIC;
