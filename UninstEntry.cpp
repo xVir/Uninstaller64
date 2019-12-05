@@ -17,13 +17,15 @@ UninstEntry::UninstEntry()
 	m_KeyNameMSI[0] = L'\0';
 	memset(&m_Timestamp, 0, sizeof(FILETIME));
 	m_IconLocations.clear();
+	m_RegBranch = NULL;
 }
 
 UninstEntry::~UninstEntry()
 {
 	delete[] m_DisplayName;
 	delete[] m_UninstallString;
-	free(m_SIC);
+	if (m_SIC)
+		free(m_SIC);
 	for (size_t i = 0; i < m_IconLocations.size(); ++i)
 		delete m_IconLocations[i];
 }
