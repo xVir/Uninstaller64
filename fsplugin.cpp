@@ -104,6 +104,7 @@ HANDLE __stdcall FsFindFirstW(WCHAR* Path, WIN32_FIND_DATAW* FindData)
 		const UninstEntry* entry = data->GetNextEntry(GlobalOptions.m_ShowHiddenEntries, GlobalOptions.m_ShowHotfixes);
 		if (entry == NULL)
 		{
+			delete data;
 			SetLastError(ERROR_NO_MORE_FILES);
 			return INVALID_HANDLE_VALUE;
 		}

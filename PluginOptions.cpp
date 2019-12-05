@@ -13,6 +13,7 @@ PluginOptions::PluginOptions()
 , m_RequestHiddenUninstallationLaunch(true)
 {
 	m_Language[0] = L'\0';
+	m_StorageLocation = OPTIONS_STORAGE_UNDEFINED;
 }
 
 void PluginOptions::Initialize()

@@ -57,17 +57,15 @@ BOOL APIENTRY DllMain(HANDLE hModule, DWORD ul_reason_for_call, LPVOID lpReserve
 			HMODULE hKernel32;
 			typedef void (WINAPI *tGetNativeSystemInfo)(LPSYSTEM_INFO);
 			tGetNativeSystemInfo fGetNativeSystemInfo;
-			SYSTEM_INFO sInfo;
+			SYSTEM_INFO sInfo = {0};
 			GetSystemDirectory(syspath, MAX_PATH);
-			wcscat_s(syspath, MAX_PATH, L"\\kernel32.dll");
-			hKernel32 = LoadLibrary(syspath);
-			fGetNativeSystemInfo = (tGetNativeSystemInfo)GetProcAddress(hKernel32, "GetNativeSystemInfo");
-			sInfo.wProcessorArchitecture = PROCESSOR_ARCHITECTURE_UNKNOWN;
-			if (fGetNativeSystemInfo != NULL)
+			hKernel32 = GetModuleHandleA("kernel32");
+			fGetNativeSystemInfo = hKernel32 ? (tGetNativeSystemInfo)GetProcAddress(hKernel32, "GetNativeSystemInfo") : NULL;
+			if (fGetNativeSystemInfo != NULL) {
+				sInfo.wProcessorArchitecture = PROCESSOR_ARCHITECTURE_UNKNOWN;
 				fGetNativeSystemInfo(&sInfo);
-			FreeLibrary(hKernel32);
-			SystemX64 = (sInfo.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_AMD64);
-
+				SystemX64 = (sInfo.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_AMD64);
+			}
 			// Load default icons for uninstallation entries.
 			DefaultIconSmall = (HICON)LoadImage((HINSTANCE)hModule, MAKEINTRESOURCE(IDI_DEFAULT_ICON), IMAGE_ICON, GetSystemMetrics(SM_CXSMICON), GetSystemMetrics(SM_CYSMICON), LR_SHARED);
 			DefaultIconLarge = (HICON)LoadImage((HINSTANCE)hModule, MAKEINTRESOURCE(IDI_DEFAULT_ICON), IMAGE_ICON, GetSystemMetrics(SM_CXICON), GetSystemMetrics(SM_CYICON), LR_SHARED);

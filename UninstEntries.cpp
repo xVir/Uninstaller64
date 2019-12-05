@@ -278,12 +278,19 @@ bool UninstEntries::UpdateUninstLocation(UninstRegBranch& RegBranch)
 				if (RegOpenKeyEx(hKeyARPC, KeyName, 0, STANDARD_RIGHTS_READ | KEY_QUERY_VALUE | PermsX64, &hKeyARPCEntry) == ERROR_SUCCESS)
 				{
 					// First get the size required to store the SlowInfoCache value.
-					if (RegQueryValueEx(hKeyARPCEntry, L"SlowInfoCache", NULL, NULL, NULL, &TempBufSz) == ERROR_SUCCESS)
+					while (RegQueryValueEx(hKeyARPCEntry, L"SlowInfoCache", NULL, NULL, NULL, &TempBufSz) == ERROR_SUCCESS)
 					{
-						// Allocate the buffer, get the info and fill in the entry fields.
-						CurrentEntry->m_SIC = (SlowInfoCache*)malloc(TempBufSz);
-						if (RegQueryValueEx(hKeyARPCEntry, L"SlowInfoCache", NULL, NULL, (LPBYTE)CurrentEntry->m_SIC, &TempBufSz) == ERROR_SUCCESS)
+						if (TempBufSz < sizeof(SlowInfoCache))
+							break;
+						// Allocate the buffer, get the info and fill in the entry fields.						
+						SlowInfoCache * SIC = (SlowInfoCache*)malloc(TempBufSz + 8);
+						if (!SIC)
+							break;
+						if (RegQueryValueEx(hKeyARPCEntry, L"SlowInfoCache", NULL, NULL, (LPBYTE)SIC, &TempBufSz) == ERROR_SUCCESS)
 						{
+							if (CurrentEntry->m_SIC)
+								free(CurrentEntry->m_SIC);
+							CurrentEntry->m_SIC = SIC;
 							// If estimated size is present and was not defined earlier by the EstimatedSize value, get it from ARPCache.
 							if ((CurrentEntry->m_SIC->m_InstallSize >= 0) && (CurrentEntry->m_Size == -2))
 								CurrentEntry->m_Size = CurrentEntry->m_SIC->m_InstallSize;
@@ -291,6 +298,11 @@ bool UninstEntries::UpdateUninstLocation(UninstRegBranch& RegBranch)
 							if (CurrentEntry->m_SIC->m_HasName)
 								CurrentEntry->AddIconLocation(CurrentEntry->m_SIC->m_Name, false);
 						}
+						else
+						{
+							free(SIC);
+						}
+						break;
 					}
 					RegCloseKey(hKeyARPCEntry);
 				}
@@ -403,8 +415,8 @@ bool UninstEntries::DeleteEntryByDisplayName(const WCHAR* DisplayName)
 	}
 
 	// Clean the stored entry.
+        delete Entry;
 	m_Entries[idx] = NULL;
-	delete Entry;
 
 	return true;
 }
